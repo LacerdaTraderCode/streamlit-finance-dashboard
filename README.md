@@ -9,6 +9,7 @@
 [![Plotly](https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white)](https://plotly.com/python/)
 [![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-orange)](https://github.com/LacerdaTraderCode/streamlit-finance-dashboard/blob/main/LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-LacerdaTraderCode-181717?logo=github)](https://github.com/LacerdaTraderCode/streamlit-finance-dashboard)
+[![Dados Não Oficiais](https://img.shields.io/badge/Dados-N%C3%A3o%20Oficiais-red)](https://github.com/LacerdaTraderCode/streamlit-finance-dashboard)
 
 </div>
 
@@ -17,6 +18,8 @@
 ## 📌 Sobre o projeto
 
 Dashboard interativo de análise financeira construído com **Streamlit** e **Plotly**. Permite analisar ações, criptomoedas e índices com gráficos de candlestick, indicadores técnicos (SMA, EMA, RSI, MACD, Bollinger) e comparação entre múltiplos ativos — tudo rodando localmente sem necessidade de infraestrutura.
+
+> ⚠️ Os dados são obtidos via `yfinance`, um wrapper **não oficial** do Yahoo Finance. Não há vínculo com o Yahoo Finance. Os dados são apenas informativos e não constituem recomendação de investimento.
 
 ### Funcionalidades
 

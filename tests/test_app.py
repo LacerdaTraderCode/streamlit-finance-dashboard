@@ -80,7 +80,9 @@ def test_indicator_toggles_do_not_break_rendering(app):
 
 
 def test_shows_error_and_stops_when_no_data(app, monkeypatch):
-    empty_loader = lambda ticker, period="6mo": pd.DataFrame()  # noqa: E731
+    def empty_loader(ticker, period="6mo"):
+        return pd.DataFrame()
+
     monkeypatch.setattr(data_loader, "load_ticker_data", empty_loader)
 
     at = app.run()

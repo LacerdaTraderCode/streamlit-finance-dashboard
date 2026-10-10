@@ -72,11 +72,27 @@ Interactive financial analysis dashboard built with **Streamlit** and **Plotly**
 ```
 streamlit-finance-dashboard/
 ├── app.py              # Main dashboard (entry point)
+├── charts.py           # Plotly figure construction
 ├── indicators.py       # Technical indicator calculations
 ├── data_loader.py      # Data fetching via yfinance
+├── tests/
+├── .github/workflows/ci.yml
 ├── requirements.txt
+├── requirements-dev.txt
 └── README.md
 ```
+
+---
+
+## 🧪 Development
+
+```bash
+pip install -r requirements-dev.txt
+ruff check . && ruff format --check .
+pytest -v
+```
+
+Tests mock `yfinance` and exercise the dashboard through Streamlit's `AppTest`, so no network access is needed. The same checks run on every push and pull request via GitHub Actions.
 
 ---
 

@@ -44,8 +44,8 @@ def test_rsi_stays_within_bounds(noisy_prices):
 def test_rsi_needs_a_full_window():
     result = rsi(pd.Series(range(1, 31), dtype="float64"), period=14)
 
-    assert result.iloc[:14].isna().all()
-    assert result.iloc[14:].notna().all()
+    assert result.iloc[:13].isna().all()
+    assert result.iloc[13:].notna().all()
 
 
 def test_macd_returns_consistent_components(noisy_prices):

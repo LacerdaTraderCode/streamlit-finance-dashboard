@@ -4,6 +4,7 @@
 
 **Interactive financial analysis dashboard with candlestick charts and technical indicators**
 
+[![CI](https://github.com/LacerdaTraderCode/streamlit-finance-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/LacerdaTraderCode/streamlit-finance-dashboard/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Plotly](https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white)](https://plotly.com/python/)
@@ -71,11 +72,27 @@ Interactive financial analysis dashboard built with **Streamlit** and **Plotly**
 ```
 streamlit-finance-dashboard/
 ├── app.py              # Main dashboard (entry point)
+├── charts.py           # Plotly figure construction
 ├── indicators.py       # Technical indicator calculations
 ├── data_loader.py      # Data fetching via yfinance
+├── tests/
+├── .github/workflows/ci.yml
 ├── requirements.txt
+├── requirements-dev.txt
 └── README.md
 ```
+
+---
+
+## 🧪 Development
+
+```bash
+pip install -r requirements-dev.txt
+ruff check . && ruff format --check .
+pytest -v
+```
+
+Tests mock `yfinance` and exercise the dashboard through Streamlit's `AppTest`, so no network access is needed. The same checks run on every push and pull request via GitHub Actions.
 
 ---
 

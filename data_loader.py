@@ -1,34 +1,25 @@
-"""
-Data Loader - busca dados financeiros via yfinance.
-"""
-import yfinance as yf
 import pandas as pd
 import streamlit as st
+import yfinance as yf
+
+CACHE_TTL_SECONDS = 300
 
 
-@st.cache_data(ttl=300)  # Cache de 5 minutos
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def load_ticker_data(ticker: str, period: str = "6mo") -> pd.DataFrame:
-    """
-    Busca dados históricos de um ticker.
-    
-    Args:
-        ticker: Símbolo (ex: 'PETR4.SA', 'AAPL', 'BTC-USD')
-        period: 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max
-    """
     try:
         data = yf.Ticker(ticker).history(period=period)
-        if data.empty:
-            return pd.DataFrame()
-        data = data.reset_index()
-        return data
-    except Exception as e:
-        st.error(f"Erro ao buscar {ticker}: {e}")
+    except Exception as exc:
+        st.error(f"Failed to fetch {ticker}: {exc}")
         return pd.DataFrame()
 
+    if data.empty:
+        return pd.DataFrame()
+    return data.reset_index()
 
-@st.cache_data(ttl=300)
+
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def get_ticker_info(ticker: str) -> dict:
-    """Retorna metadados do ticker (nome, setor, etc.)."""
     try:
         info = yf.Ticker(ticker).info
         return {
@@ -42,7 +33,6 @@ def get_ticker_info(ticker: str) -> dict:
 
 
 def calculate_metrics(data: pd.DataFrame) -> dict:
-    """Calcula métricas resumidas."""
     if data.empty:
         return {}
 

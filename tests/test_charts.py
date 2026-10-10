@@ -38,7 +38,13 @@ def test_price_only_chart(ohlcv):
 
 
 def test_bollinger_bands_are_added_to_price_panel(ohlcv):
-    figure = build_price_chart(ohlcv, show_sma=False, show_rsi=False, show_macd=False, show_bollinger=True)
+    figure = build_price_chart(
+        ohlcv,
+        show_sma=False,
+        show_bollinger=True,
+        show_rsi=False,
+        show_macd=False,
+    )
 
     assert trace_names(figure) == ["Price", "BB Upper", "BB Lower"]
     assert figure.data[2].fill == "tonexty"
